@@ -20,7 +20,6 @@ function anagram(string1, string2){
         if ( letterCount1[letter] !== letterCount2[letter] ) return false;
     }
     return true;
-
 }
 
 
