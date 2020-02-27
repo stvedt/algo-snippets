@@ -126,7 +126,7 @@ class DoublyLinkedList {
     if(position < 0 || position > this.length) return undefined;
     if(position === 0) return this.shift();
     if(position === this.length - 1) return this.pop();
-    
+
     let foundNode = this.get(position);
     let beforeNode = foundNode.previous;
     let afterNode = foundNode.next;
