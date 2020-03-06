@@ -6,6 +6,7 @@ class StackNode {
 
 }
 class Stack {
+  // LIFO
   constructor(){
     this.first = null;
     this.last = null;

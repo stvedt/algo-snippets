@@ -6,6 +6,7 @@ class queueNode {
 }
 
 class Queue {
+  // FIFO
   constructor(value){
     this.first = null;
     this.last = null;
