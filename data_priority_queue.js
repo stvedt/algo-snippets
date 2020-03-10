@@ -63,7 +63,7 @@ class PriorityQueue {
           (swap === null && rightChild.priority < element.priority) ||
           (swap !== null && rightChild.priority < leftChild.priority)
         ){
-          swap = leftChildIndex  
+          swap = rightChildIndex;
         }
       }
 

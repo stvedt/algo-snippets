@@ -54,7 +54,7 @@ class MaxBinaryHeap {
             (swap === null && rightChild > element) ||
             (swap !== null && rightChild > leftChild && rightChild > element)
           ){
-            swap = leftChildIndex  
+            swap = rightChildIndex;
           }
         }
 
