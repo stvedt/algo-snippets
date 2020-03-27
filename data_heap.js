@@ -1,19 +1,19 @@
 class MaxBinaryHeap {
-  constructor(){
+  constructor() {
     this.values = [];
   }
-  insert(element){
+  insert(element) {
     this.values.push(element);
     this.bubbleUp();
   }
-  bubbleUp(){
+  bubbleUp() {
     let index = this.values.length - 1;
     const element = this.values[index];
-    while(index > 0){
-      let parentIndex = Math.floor((index - 1)/2);
+    while (index > 0) {
+      let parentIndex = Math.floor((index - 1) / 2);
       let parent = this.values[parentIndex];
 
-      if(element <= parent) break;
+      if (element <= parent) break;
 
       this.values[parentIndex] = element;
       this.values[index] = parent;
@@ -21,44 +21,44 @@ class MaxBinaryHeap {
     }
   }
 
-  extractMax(){
+  extractMax() {
     const max = this.values[0];
     const end = this.values.pop();
-    if(this.values.length > 0){
+    if (this.values.length > 0) {
       this.values[0] = end;
       this.sinkDown();
     }
     return max;
   }
-  sinkDown(){
+  sinkDown() {
     let index = 0;
     const length = this.values.length;
     const element = this.values[0];
 
-    while(true){
+    while (true) {
       let leftChildIndex = 2 * index + 1;
       let rightChildIndex = 2 * index + 2;
       let leftChild, rightChild;
       let swap = null;
 
-      if(leftChildIndex < length){
+      if (leftChildIndex < length) {
         leftChild = this.values[leftChildIndex];
-        if(leftChild > element){
-          swap = leftChildIndex
+        if (leftChild > element) {
+          swap = leftChildIndex;
         }
 
-        if(rightChildIndex < length){
+        if (rightChildIndex < length) {
           rightChild = this.values[rightChildIndex];
-          
-          if(
+
+          if (
             (swap === null && rightChild > element) ||
             (swap !== null && rightChild > leftChild && rightChild > element)
-          ){
+          ) {
             swap = rightChildIndex;
           }
         }
 
-        if(swap === null) break;
+        if (swap === null) break;
         this.values[index] = this.values[swap];
         this.values[swap] = element;
         index = element;
