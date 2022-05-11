@@ -114,7 +114,8 @@ class SinglyLinkedList {
       default:
         let newNode = new ListNode(val);
         let beforeInsert = this.get(position - 1);
-        let afterInsert = this.get(position);
+        // let afterInsert = this.get(position); // line below prevents an additional traversal
+        let afterInsert = beforeInsert.next;
         beforeInsert.next = newNode;
         newNode.next = afterInsert;
         this.length++;
@@ -141,19 +142,29 @@ class SinglyLinkedList {
   }
 
   reverse() {
-    let node = this.head;
+    let current = this.head;
     this.head = this.tail;
-    this.tail = node;
+    this.tail = current;
 
-    let prev,
-      next = null;
+    let cachedNext = null;
+    let prev = null;
     for (let i = 0; i < this.length; i++) {
-      next = node.next;
-      node.next = prev;
-      prev = node;
-      node = next;
+      cachedNext = current.next; // store next
+      current.next = prev; // flips the link -> to <-
+      prev = current; // store current node for next iteration
+      current = cachedNext; // updates current to next in original linked list
     }
-    return this;
+  }
+
+  print() {
+    let array = [];
+    let current = this.head;
+
+    while (current) {
+      array.push(current.value);
+      current = current.next;
+    }
+    console.log(array);
   }
 }
 
@@ -164,5 +175,6 @@ myList.push("hi");
 myList.push("there");
 myList.push("love");
 myList.push("!!");
-
-myList.reverse();
+myList.print();
+console.log(myList.reverse());
+myList.print();
