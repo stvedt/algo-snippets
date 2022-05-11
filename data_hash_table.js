@@ -25,7 +25,7 @@ class HashTable {
   get(key) {
     let hash = this.hash(key);
     if (this.keyMap[hash])
-      return this.keyMap[hash].find(element => element[0] === key);
+      return this.keyMap[hash].find((element) => element[0] === key);
     return undefined;
   }
 

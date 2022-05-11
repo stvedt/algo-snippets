@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/length-of-last-word/submissions/
 // The edge cases are the real challenge here. Ending with spaces.
 
-var lengthOfLastWord = function(s) {
+var lengthOfLastWord = function (s) {
   let words = s.split(" ");
   console.log(words);
 

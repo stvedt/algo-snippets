@@ -1,30 +1,30 @@
 class TreeNode {
-  constructor(value){
+  constructor(value) {
     this.value = value;
-    this.left = null
+    this.left = null;
     this.right = null;
   }
 }
 
 class BinarySearchTree {
-  constructor(){
+  constructor() {
     this.root = null;
   }
 
-  insert(val){
+  insert(val) {
     let newNode = new TreeNode(val);
-    
-    if(!this.root) {
+
+    if (!this.root) {
       this.root = newNode;
       return this;
     }
-    
-    let currentNode = this.root;
-    while(true){
-      const position = (val < currentNode.value) ? 'left' : 'right';
-      if(val === currentNode.value) return undefined;
 
-      if(currentNode[position] === null){
+    let currentNode = this.root;
+    while (true) {
+      const position = val < currentNode.value ? "left" : "right";
+      if (val === currentNode.value) return undefined;
+
+      if (currentNode[position] === null) {
         currentNode[position] = newNode;
         return this;
       }
@@ -50,75 +50,78 @@ class BinarySearchTree {
         }
       }
       */
-    }// end while
+    } // end while
   }
 
-  find(val){
+  find(val) {
     let currentNode = this.root;
-    if(!currentNode) return false; // empty tree
-    
-    while(true){
-      if(val === currentNode.value) return true;
-      
-      if(val > currentNode.value){
+    if (!currentNode) return false; // empty tree
+
+    while (true) {
+      if (val === currentNode.value) return true;
+
+      if (val > currentNode.value) {
         currentNode = currentNode.right;
       } else {
         currentNode = currentNode.left;
       }
-      
-      if(currentNode === null) return false;
+
+      if (currentNode === null) return false;
     }
   }
 
-  BFSearch(){ // Breadth First Search
+  BFSearch() {
+    // Breadth First Search
     let queue = [],
-        storedVals = [];
-    
+      storedVals = [];
+
     queue.push(this.root);
 
-    while(queue.length > 0){
-      let currentNode = queue.shift();;
-      storedVals.push(currentNode.value)
-      if(currentNode.left) queue.push(currentNode.left)
-      if(currentNode.right) queue.push(currentNode.right)
-      
+    while (queue.length > 0) {
+      let currentNode = queue.shift();
+      storedVals.push(currentNode.value);
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
     }
     return storedVals;
   }
 
-  DFSPre(){ // Depth First Search Pre-order
+  DFSPre() {
+    // Depth First Search Pre-order
     let storedVals = [];
-    function traverse(node){
+    function traverse(node) {
       storedVals.push(node.value);
-      if(node.left) traverse(node.left)
-      if(node.right) traverse(node.right)
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
     }
 
-    traverse(this.root)
-    return  storedVals;
+    traverse(this.root);
+    return storedVals;
   }
-  DFSPost(){ // Depth First Search Post-order
+  DFSPost() {
+    // Depth First Search Post-order
     let storedVals = [];
-    function traverse(node){
-      if(node.left) traverse(node.left)
-      if(node.right) traverse(node.right)
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
       storedVals.push(node.value);
     }
 
-    traverse(this.root)
-    return  storedVals;
+    traverse(this.root);
+    return storedVals;
   }
-  
-  DFSInOrder(){ // Depth First Search In-order
+
+  DFSInOrder() {
+    // Depth First Search In-order
     let storedVals = [];
-    function traverse(node){
-      if(node.left) traverse(node.left)
+    function traverse(node) {
+      if (node.left) traverse(node.left);
       storedVals.push(node.value);
-      if(node.right) traverse(node.right)
+      if (node.right) traverse(node.right);
     }
 
-    traverse(this.root)
-    return  storedVals;
+    traverse(this.root);
+    return storedVals;
   }
 }
 
@@ -128,5 +131,5 @@ bst.insert(10);
 bst.insert(6);
 bst.insert(3);
 bst.insert(8);
-bst.insert(15)
+bst.insert(15);
 bst.insert(20);

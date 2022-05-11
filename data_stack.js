@@ -1,13 +1,12 @@
 class StackNode {
-  constructor(value){
+  constructor(value) {
     this.value = value;
     this.next = null;
   }
-
 }
 class Stack {
   // LIFO
-  constructor(){
+  constructor() {
     this.first = null;
     this.last = null;
     this.size = 0;
@@ -16,9 +15,9 @@ class Stack {
   // more similar to push/pop to from linkedlists
   // better to remove from beginning faster to prevent traversal to end
 
-  push(value){
+  push(value) {
     let newNode = new StackNode(value);
-    if(this.size === 0){
+    if (this.size === 0) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -30,11 +29,11 @@ class Stack {
     return this;
   }
 
-  pop(){
-    if(this.size <=0) return null;
-    
+  pop() {
+    if (this.size <= 0) return null;
+
     let removedFirst = this.first;
-    if(removedFirst === this.last){
+    if (removedFirst === this.last) {
       this.last = null;
     }
     this.first = removedFirst.next;

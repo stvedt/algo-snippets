@@ -1,5 +1,5 @@
 class ListNode {
-  constructor(val){
+  constructor(val) {
     this.value = val;
     this.next = null;
     this.previous = null;
@@ -7,15 +7,15 @@ class ListNode {
 }
 
 class DoublyLinkedList {
-  constructor(){
+  constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
 
-  push(val){
+  push(val) {
     let newNode = new ListNode(val);
-    if(this.length === 0){
+    if (this.length === 0) {
       this.head = newNode;
       this.tail = newNode;
     } else {
@@ -27,10 +27,10 @@ class DoublyLinkedList {
     return this;
   }
 
-  pop(){
-    if(this.length <= 0) return undefined;
+  pop() {
+    if (this.length <= 0) return undefined;
     let poppedNode = this.tail;
-    if(this.tail.previous){
+    if (this.tail.previous) {
       this.tail = poppedNode.previous;
       this.tail.next = null;
       poppedNode.previous = null;
@@ -40,13 +40,12 @@ class DoublyLinkedList {
     }
     this.length--;
     return poppedNode;
-
   }
 
-  shift(){
-    if(this.length <= 0) return undefined;
+  shift() {
+    if (this.length <= 0) return undefined;
     let shiftedNode = this.head;
-    if(shiftedNode.next){
+    if (shiftedNode.next) {
       this.head = shiftedNode.next;
       this.head.previous = null;
       shiftedNode.next = null;
@@ -56,12 +55,11 @@ class DoublyLinkedList {
     }
     this.length--;
     return shiftedNode;
-
   }
 
-  unShift(val){
+  unShift(val) {
     let newNode = new ListNode(val);
-    if(this.length === 0){
+    if (this.length === 0) {
       this.head = newNode;
       this.tail = newNode;
     } else {
@@ -71,42 +69,41 @@ class DoublyLinkedList {
     }
     this.length++;
     return this;
-
   }
 
-  get(position){
-    if(position < 0 || position >= this.length) return null;
+  get(position) {
+    if (position < 0 || position >= this.length) return null;
 
-    let leftToRight = (position - 1 < this.length/2);
+    let leftToRight = position - 1 < this.length / 2;
 
     let traverseCount = leftToRight ? 0 : this.length - 1;
-    let current =       leftToRight ? this.head : this.tail;
+    let current = leftToRight ? this.head : this.tail;
 
-    while(traverseCount !== position){
-      if(leftToRight){
+    while (traverseCount !== position) {
+      if (leftToRight) {
         current = current.next;
-        traverseCount++  
+        traverseCount++;
       } else {
         current = current.previous;
-        traverseCount--;  
+        traverseCount--;
       }
     }
     return current;
   }
 
-  set(val, position){
+  set(val, position) {
     let foundNode = this.get(position);
-    if(foundNode){
+    if (foundNode) {
       foundNode.value = val;
-      return  foundNode
+      return foundNode;
     }
     return false;
   }
 
-  insert(val, position){
-    if(position < 0 || position > this.length) return false;
-    if(position === 0) return !!this.unShift(val);
-    if(position === this.length) return !!this.push(val);
+  insert(val, position) {
+    if (position < 0 || position > this.length) return false;
+    if (position === 0) return !!this.unShift(val);
+    if (position === this.length) return !!this.push(val);
 
     let foundNode = this.get(position);
     let newNode = new ListNode(val);
@@ -118,14 +115,13 @@ class DoublyLinkedList {
     foundNode.previous = newNode;
 
     this.length++;
-    return  true;
-
+    return true;
   }
 
-  remove(position){
-    if(position < 0 || position > this.length) return undefined;
-    if(position === 0) return this.shift();
-    if(position === this.length - 1) return this.pop();
+  remove(position) {
+    if (position < 0 || position > this.length) return undefined;
+    if (position === 0) return this.shift();
+    if (position === this.length - 1) return this.pop();
 
     let foundNode = this.get(position);
     let beforeNode = foundNode.previous;

@@ -1,11 +1,14 @@
-const assertEquals = ((i = 1) => (result, expected) =>
-  console.log(
-    `Assertion#${i++}: ${
-      result === expected
-        ? "Passed"
-        : `FAILED! expected ${result} to equal ${expected}`
-    }`
-  ))();
+const assertEquals = (
+  (i = 1) =>
+  (result, expected) =>
+    console.log(
+      `Assertion#${i++}: ${
+        result === expected
+          ? "Passed"
+          : `FAILED! expected ${result} to equal ${expected}`
+      }`
+    )
+)();
 
 // Set implementation ////////////////
 class MySet {
@@ -17,7 +20,7 @@ class MySet {
 
     if (array) {
       console.log("has array");
-      array.forEach(value => {
+      array.forEach((value) => {
         console.log(value);
         this.add(value);
       });
@@ -46,7 +49,7 @@ class MySet {
 
   union(otherSet) {
     let unionedSet = new MySet(this.values);
-    otherSet.values.forEach(value => unionedSet.add(value));
+    otherSet.values.forEach((value) => unionedSet.add(value));
     return unionedSet;
     // returns new set
   }

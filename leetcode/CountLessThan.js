@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
 
-let smallerNumbersThanCurrent = function(nums) {
+let smallerNumbersThanCurrent = function (nums) {
   let storedCounts = []; // could also use object for key value dict. marginally better usage space complexity
   let finalArrCount = [];
 

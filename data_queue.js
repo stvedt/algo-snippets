@@ -1,5 +1,5 @@
 class queueNode {
-  constructor(value){
+  constructor(value) {
     this.value = value;
     this.next = null;
   }
@@ -7,15 +7,15 @@ class queueNode {
 
 class Queue {
   // FIFO
-  constructor(value){
+  constructor(value) {
     this.first = null;
     this.last = null;
     this.size = 0;
   }
 
-  enqueue(value){
+  enqueue(value) {
     let newNode = new queueNode(value);
-    if(!this.last){
+    if (!this.last) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -26,15 +26,15 @@ class Queue {
     return this;
   }
 
-  dequeue(){
-    if(this.size === 0) return null;
+  dequeue() {
+    if (this.size === 0) return null;
 
     let tempFirst = this.first;
-    
+
     this.first = tempFirst.next;
     tempFirst.next = null;
-    if(this.size === 1) this.last = null
-    
+    if (this.size === 1) this.last = null;
+
     this.size--;
     return tempFirst;
   }
