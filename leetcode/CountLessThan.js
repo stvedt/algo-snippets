@@ -21,7 +21,7 @@ let smallerNumbersThanCurrent = function(nums) {
 };
 
 // clever
-let smallerNumbersThanCurrent = function(nums) {
-  const sortedNums = [...nums].sort((a, b) => a - b);
-  return nums.map(x => sortedNums.indexOf(x));
-};
+// let smallerNumbersThanCurrent = function(nums) {
+//   const sortedNums = [...nums].sort((a, b) => a - b);
+//   return nums.map(x => sortedNums.indexOf(x));
+// };
