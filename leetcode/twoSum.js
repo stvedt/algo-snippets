@@ -1,3 +1,10 @@
+/**
+ * https://leetcode.com/problems/two-sum/
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
 // brute force
 /*
 const twoSum = function(nums, target) {
@@ -9,19 +16,18 @@ const twoSum = function(nums, target) {
 };
 */
 
-function twoSum(nums, target) {
-  let sumPair = {};
-
+var twoSum = function (nums, target) {
+  let pairs = {};
   for (let i = 0; i < nums.length; i++) {
-    let currentNum = nums[i];
-    let matchingNum = target - currentNum;
+    const number = nums[i];
+    const matchingNumber = target - number;
 
-    if (matchingNum in sumPair) {
-      return [sumPair[matchingNum], i];
+    if (matchingNumber in pairs) {
+      return [pairs[matchingNumber], i];
     }
 
-    sumPair[currentNum] = i;
+    pairs[number] = i;
   }
-}
+};
 
 console.log(twoSum([2, 5, 7, 11, 15], 9));
