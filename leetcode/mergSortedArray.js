@@ -28,6 +28,58 @@ var merge = function (nums1, m, nums2, n) {
   }
 
   nums1.sort(function (a, b) {
+    // sort uses n log n
     return a - b;
   });
+};
+
+// more optimized
+
+var merge = function (nums1, m, nums2, n) {
+  let num1ptr = m - 1;
+  let num2ptr = n - 1;
+
+  for (let i = m + n - 1; i >= 0; i--) {
+    num1 = nums1[num1ptr];
+    num2 = nums2[num2ptr];
+    if (num1 > num2 && num1ptr >= 0) {
+      nums1[i] = num1;
+      num1ptr--;
+    } else if (num2ptr >= 0) {
+      nums1[i] = num2;
+      num2ptr--;
+    }
+  }
+
+  return nums1;
+};
+
+// readability pass
+
+var merge = function (nums1, m, nums2, n) {
+  let insertIndex = m + n - 1;
+  let num1ptr = m - 1;
+  let num2ptr = n - 1;
+
+  while (num1ptr >= 0 && num2ptr >= 0) {
+    num1 = nums1[num1ptr];
+    num2 = nums2[num2ptr];
+    console.log(num1, num2);
+    if (num1 > num2) {
+      nums1[insertIndex] = num1;
+      num1ptr--;
+    } else {
+      nums1[insertIndex] = num2;
+      num2ptr--;
+    }
+    insertIndex--;
+  }
+
+  while (num2ptr >= 0) {
+    nums1[insertIndex] = nums2[num2ptr];
+    num2ptr--;
+    insertIndex--;
+  }
+
+  return nums1;
 };
